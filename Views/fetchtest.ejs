@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Suscribe</button>
+
+    <script>
+
+        document.querySelector('button').onclick = () => {
+            SubcribeToProfile('http://localhost:3000/api/user/6664404ec4b71a9c6be9df5d')
+        }
+
+        function SubcribeToProfile(url) {
+            //const id = '6664404ec4b71a9c6be9df5d'
+            fetch(url, {
+                method: "GET",
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
+        } 
+
+        // 6664404ec4b71a9c6be9df5d
+    </script>
+</body>
+
+</html>

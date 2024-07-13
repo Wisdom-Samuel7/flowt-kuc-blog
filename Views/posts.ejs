@@ -1,0 +1,97 @@
+
+<% for(var i=0; i<posts.length; i++) {%>
+
+    <div class="posts" style="position: relative;">
+
+        <div class="post">
+
+            <header style="margin-bottom: 1em;display: flex;justify-content: space-between;align-items: center;">
+                <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;gap: .3em;">
+
+                    <div>
+                        <img width="60px" height="60px" style="border-radius: 50%;object-fit: cover;"
+                        src="/images/<%=userPost[i].image %>" alt="">
+                    </div>
+
+ 
+                    <div>
+                        <p style="color:slategrey;font-weight: bolder;font-family: sans-serif;margin-bottom: .3em;"><%=userPost[i].name%></p>
+                        <p style="color:#999;font-weight: lighter;font-family: sans-serif;"><%=userPost[i].subscribers%> followers</p>
+                    </div>
+                   
+                </div>
+
+                <div>
+                    <button data-postedBy="<%= posts[i].postedBy %>" data-user="<%= userID %>" data-id="<%= posts[i]._id %>" class="id" style="padding: .5em 1.4em;border: navajowhite;background: #134;border-radius: 10%;color: #fff;cursor: pointer;">
+                        Follow
+                    </button>
+                </div>
+            </header>
+
+            <article style="margin-bottom: 1em;font-family: sans-serif;font-style: normal;font-weight: 600;color: azure;">
+                <%= posts[i].article %>
+            </article>
+
+            <div>
+                <img width="100%" height="180px" style="object-fit: cover;border-radius: .5em;"
+                    src="/uploadimgs/<%= posts[i].image %>" alt="">
+            </div>
+
+
+            <div class="impress">
+
+                <div class="icons">
+
+                    <div>
+                        <!-- LIKES -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="steelblue"
+                            class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                        </svg>
+
+                        <!-- HAPPY -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="orange"
+                            class="bi bi-emoji-smile-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8" />
+                        </svg>
+
+                        <!-- SAD -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green"
+                            class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m-2.715 5.933a.5.5 0 0 1-.183-.683A4.5 4.5 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.5 3.5 0 0 0 8 10.5a3.5 3.5 0 0 0-3.032 1.75.5.5 0 0 1-.683.183M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8" />
+                        </svg>
+
+                        <!-- COMMENT -->
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-pen"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
+                        </svg> -->
+
+                    </div>
+
+                    <div aria-disabled="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="violet" class="bi bi-pin"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#F70887"
+                            class="bi bi-share-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
+                        </svg>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <%} %>

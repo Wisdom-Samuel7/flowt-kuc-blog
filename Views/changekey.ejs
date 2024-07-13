@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWT</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    main {
+        width: 100vw;
+        height: 100vh;
+        background: #234;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.4em;
+
+    }
+
+    input:not([type="submit"]) {
+        width: 20em;
+        padding: 1.2em 1.2em;
+        border: none;
+        border-radius: .7em;
+
+    }
+
+    h1 {
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+        margin-bottom: 1em;
+    }
+
+    input[type="submit"] {
+        font-weight: bolder;
+        background: dodgerblue;
+        color: #fff;
+        width: 100%;
+        padding: 1em 1.2em;
+        border: none;
+        border-radius: .7em;
+
+    }
+
+    input:focus {
+        background: dodgerblue;
+        border: 1px solid #fff;
+        outline: none;
+    }
+    ::placeholder{
+        color: crimson;
+    }
+</style>
+
+<body>
+
+    <main>
+        <h1>Flow<span style="font-size: 1.8em;color: dodgerblue;font-weight: bolder;font-family: cursive;">t</span></h1>
+
+        <form method="post">
+
+            <input type="password" name="password" placeholder="Enter New password">
+            <!-- <input type="password" name="password" placeholder="Confirm password"> -->
+
+            <p style="color: red;float: left;">
+                <%= passwordReport %>
+            </p>
+
+            <input type="submit" value="NEXT">
+
+        </form>
+
+        <!-- <div style="display: flex;justify-content: space-between;margin-top: 1em;gap: 4em;">
+            <p> <a style="color: blue;" href="/api/user/resetpassword">Login ?</a></p>
+        </div> -->
+    </main>
+
+    <script>
+
+        window.onload = () => {
+            const path = window.location.href
+            document.querySelector("form").setAttribute("action", `${path}`)
+
+        }
+    </script>
+</body>
+
+</html>

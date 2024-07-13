@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWT</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
+
+    .email {
+        font-size: .5em;
+        color: #fff;
+        display: block;
+        font-family: sans-serif;
+        text-align: end;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100vw;
+        padding: .8em 0;
+        box-shadow: 0px 1px 2px slategray;
+        background: rgba(250, 250, 250, .1);
+        background-color: #134;
+    }
+
+    h1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .links {
+        display: flex;
+        gap: 1.3em;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .links a {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .blogs {
+        width: 100vw;
+        height: fit-content;
+        display: flex;
+        gap: 1em;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        /* justify-content: center; */
+        overflow-y: scroll;
+        padding: 2em 0;
+        /* background-color: #234; */
+    }
+
+    .blog_post {
+        width: 100%;
+        height: fit-content;
+        padding: 1em 2em;
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        border-radius: .5em;
+        background: #000;
+
+    }
+
+    .blog_post header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .head {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+
+    .blog_post article {
+        padding: .3em;
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+        margin: .3em 1em;
+    }
+
+    main {
+        width: 700px;
+        box-shadow: 1px 2px 10px slategray;
+        border-radius: .4em;
+        padding: .3em .3em;
+    }
+
+    .posts {
+        width: 100vw;
+        height: fit-content;
+        padding: 1em 0;
+    }
+
+    .post {
+        width: 70%;
+        height: fit-content;
+        margin: .1em auto;
+        padding: 1em 1em;
+        border-radius: .5em;
+        box-shadow: 1px 2px 10px slategray;
+        background: #134;
+    }
+
+    @media screen and (min-width:760px) {
+        .allPost {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+    }
+</style>
+
+<body>
+
+    <nav>
+
+        <div style="color: rosybrown;">
+        
+            <h1 class="email" style="color: slategray;font-size: .8em;">
+                <%= message %>
+            </h1>
+        </div>
+
+        <div class="links">
+
+            <a href="/api/user/post">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+                </svg>
+            </a>
+
+            <a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                    class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                    <path
+                        d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2" />
+                </svg>
+            </a>
+
+            <!-- <a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart4"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+                </svg>
+            </a> -->
+
+            <a href="/"> <img width="30px" height="30px"
+                    style="border-radius: 50%;object-fit: cover;margin-left: 2em;scale: 1.1;" src="/images/<%= pics %>"
+                    alt="" srcset="">
+            </a>
+
+        </div>
+
+    </nav>
+
+    <section class="blogs">
+        <!-- <div style="padding: 2.3em 0;background: transparent;">
+            
+        </div> -->
+        <div>
+            <h2
+                style="position: absolute;top: .5em;left: 1.4em;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                People you may know
+            </h2>
+        </div>
+
+        <div class="blog_post" style="background: #fff;">
+
+
+            <main>
+                <header>
+
+                    <div class="head">
+
+                        <div>
+                            <p style="font-weight: bolder;font-family: sans-serif;">
+                                <%= self.name %>
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 2.5em;" width="26" height="26"
+                            fill="#134" class="bi bi-person-add" viewBox="0 0 16 16">
+                            <path
+                                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                            <path
+                                d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                        </svg>
+                    </div>
+
+                </header>
+
+                <div>
+                    <img width="100%" height="150px" style="margin: .3em auto;object-fit: cover;border-radius: .4em;"
+                        src='/images/<%= self.image %>' alt="" srcset="">
+                </div>
+
+            </main>
+
+
+            <% for(var i=0; i<people.length; i++) {%>
+
+                <main>
+                    <header>
+
+                        <div class="head">
+
+                            <!-- <div> 
+                              <img width="30px" height="30px" style="border: 1px solid brown;border-radius: 50%;" src="" alt="">
+                            </div> -->
+
+                            <div>
+                                <p style="font-weight: bolder;font-family: sans-serif;">
+                                    <%= people[i].name %>
+                                </p>
+                                <!-- <p style="font-style: oblique;font-size: smaller;color: slategray;">Date</p> -->
+                            </div>
+                        </div>
+
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 2.5em;" width="26" height="26"
+                                fill="#134" class="bi bi-person-add" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                                <path
+                                    d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+                            </svg>
+                        </div>
+
+                    </header>
+
+                    <!-- <article>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi nihil tempore veritatis et
+            officiis nisi quo, enim dolores saepe, amet iusto vitae. Explicabo incidunt veritatis veniam
+            molestiae id officiis quas!
+        </article> -->
+
+                    <div>
+                        <img width="100%" height="150px"
+                            style="margin: .3em auto;object-fit: cover;border-radius: .4em;"
+                            src='/images/<%= people[i].image %>' alt="" srcset="">
+                    </div>
+
+                    <!-- <div class="impress">
+
+            <div class="icons">
+
+               
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="steelblue"
+                        class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" />
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="orange"
+                        class="bi bi-emoji-smile-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8" />
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="green"
+                        class="bi bi-emoji-frown-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m-2.715 5.933a.5.5 0 0 1-.183-.683A4.5 4.5 0 0 1 8 9.5a4.5 4.5 0 0 1 3.898 2.25.5.5 0 0 1-.866.5A3.5 3.5 0 0 0 8 10.5a3.5 3.5 0 0 0-3.032 1.75.5.5 0 0 1-.683.183M10 8c-.552 0-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5S10.552 8 10 8" />
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-pen"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
+                    </svg>
+
+                </div>
+            
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="violet" class="bi bi-pin"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M4.146.146A.5.5 0 0 1 4.5 0h7a.5.5 0 0 1 .5.5c0 .68-.342 1.174-.646 1.479-.126.125-.25.224-.354.298v4.431l.078.048c.203.127.476.314.751.555C12.36 7.775 13 8.527 13 9.5a.5.5 0 0 1-.5.5h-4v4.5c0 .276-.224 1.5-.5 1.5s-.5-1.224-.5-1.5V10h-4a.5.5 0 0 1-.5-.5c0-.973.64-1.725 1.17-2.189A6 6 0 0 1 5 6.708V2.277a3 3 0 0 1-.354-.298C4.342 1.674 4 1.179 4 .5a.5.5 0 0 1 .146-.354m1.58 1.408-.002-.001zm-.002-.001.002.001A.5.5 0 0 1 6 2v5a.5.5 0 0 1-.276.447h-.002l-.012.007-.054.03a5 5 0 0 0-.827.58c-.318.278-.585.596-.725.936h7.792c-.14-.34-.407-.658-.725-.936a5 5 0 0 0-.881-.61l-.012-.006h-.002A.5.5 0 0 1 10 7V2a.5.5 0 0 1 .295-.458 1.8 1.8 0 0 0 .351-.271c.08-.08.155-.17.214-.271H5.14q.091.15.214.271a1.8 1.8 0 0 0 .37.282" />
+                    </svg>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#F70887"
+                        class="bi bi-share-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
+                    </svg>
+                </div>
+
+            </div>
+
+        </div> -->
+
+
+                </main>
+
+                <%} %>
+        </div>
+
+        <div>
+            <h3
+                style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;float: left;">
+                Recent Post
+            </h3>
+        </div>
+
+
+        <!-- Post Sections -->
+
+
+        <div class="allPost">
+            <%- include("./posts") %>
+        </div>
+
+
+    </section>
+
+    <script src="/blog.js"></script>
+
+</body>
+
+</html>

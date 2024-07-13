@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWT</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="../public/index.css"> -->
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: .5em 1em;
+        background: rgba(0, 0, 0, .3);
+        background: black;
+        gap: 1em;
+    }
+
+    nav h1 {
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-style: normal;
+    }
+
+    .links {
+        display: flex;
+        gap: 1.3em;
+        align-items: center;
+        font-weight: 600;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    nav a {
+        color: hsla(30, 40%, 60%, 30);
+    }
+
+    body {
+        background: #234;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .random-post {
+        width: 100vw;
+        height: 90vh;
+        position: relative;
+        background: linear-gradient(to bottom right, rgba(0, 0, 50, .7), rgba(0, 0, 0, .6)), url("https://img.freepik.com/free-photo/autism-day-awareness-collage-style-with-people_23-2151355177.jpg?t=st=1720685660~exp=1720689260~hmac=10b06ffd66c7a80333a7eaedb26b67a3ebfb93016adbc17016e3691ba94fb39e&w=740");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .access-link {
+        width: 100vw;
+        position: absolute;
+        bottom: 2em;
+        display: flex;
+        justify-content: center;
+    }
+
+    .access-link button {
+        border: none;
+        padding: .5em 1em;
+        border-radius: 1em;
+        background: dodgerblue;
+        display: flex;
+        justify-content: center;
+        gap: .6em;
+        align-items: center;
+        font-weight: bolder;
+        color: #007;
+        font-family: sans-serif;
+        font-size: larger;
+    }
+
+    main {
+        width: 100%;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main h1 {
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+        margin-bottom: .4em;
+        text-align: center;
+        letter-spacing: .3em;
+    }
+
+    .txt {
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-size: larger;
+        font-style: normal;
+        color: dodgerblue;
+        letter-spacing: .4em;
+    }
+</style>
+
+<body>
+
+    <%- include('navbar.ejs') %>
+
+        <div class="random-post">
+            <!-- ACCESS PAGE LINK -->
+            <div class="access-link">
+
+                <a href="/api/user/login">
+
+                    <button> Get full access <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#fff"
+                            class="bi bi-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg></button>
+
+                </a>
+
+            </div>
+
+            <!-- Main content -->
+
+            <main>
+
+                <h1>GET CONNECTED , STAY <mark
+                        style="padding: .2em .4em;border-radius: .6em;line-height: 1em;">CONNECTED</mark> </h1>
+                <span class="txt">Epic scenes available here </span>
+
+            </main>
+            
+        </div>
+
+</body>
+
+</html>
